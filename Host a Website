@@ -11,6 +11,20 @@ REGION="ap-south-1"  # You can change the region
 INDEX_FILE="indexx.html"  # Index file name [uploaded directly to cloudshell]
 LOCAL_DIR="./website-files"  # Folder containing your static website files
 
+# Step 1: Create an S3 bucket (only if the bucket doesn't already exist)
+aws s3api create-bucket --bucket $BUCKET_NAME --region $REGION --create-bucket-configuration LocationConstraint=$REGION
+
+# Step 2: Enable static website hosting on the S3 bucket (no error file provided)
+aws s3 website s3://$BUCKET_NAME/ --index-document $INDEX_FILE
+
+# Step 3: Upload the website files to the bucket
+aws s3 sync $LOCAL_DIR s3://$BUCKET_NAME/
+
+# Step 4: Skip making the bucket public and setting object ACL (You will handle this separately)
+
+# Step 5: Skip outputting the website URL (since you're using CloudFront)
+echo "Your website files have been uploaded to the bucket: $BUCKET_NAME"
+
 
 ==================================================================================================================================================================================
 
