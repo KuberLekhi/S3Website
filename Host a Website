@@ -1,9 +1,9 @@
------CREATING THE BUCKET 
+#!/bin/bash
+
+#CREATING THE BUCKET 
 
 #Bucket name here is taken as "mybucket-kuberlekhi"
 #Index page is "indexx.html"
-
-#!/bin/bash
 
 # Variables
 BUCKET_NAME="mybucket-kuberlekhi"  # Pre-defined bucket name
@@ -26,10 +26,7 @@ aws s3 sync $LOCAL_DIR s3://$BUCKET_NAME/
 echo "Your website files have been uploaded to the bucket: $BUCKET_NAME"
 
 
-==================================================================================================================================================================================
-
-
------jSON POLICY TO BE STORED IN A TEXT EDITOR LIKE NANO eg "policy.json"
+#jSON POLICY TO BE STORED IN A TEXT EDITOR LIKE NANO eg "policy.json"
 
 
 {
@@ -45,33 +42,29 @@ echo "Your website files have been uploaded to the bucket: $BUCKET_NAME"
 }
 
 
------APPLY THAT POLICY 
+#APPLY THAT POLICY 
 
 aws s3api put-bucket-policy --bucket mybucket-kuberlekhi --policy file://policy.json
 
 
------VERIFY IF ITS APPLIED 
+#VERIFY IF ITS APPLIED 
 
 aws s3api get-bucket-policy --bucket mybucket-kuberlekhi
 
 
-==================================================================================================================================================================================
-
------ENABLE STATIC WEBSITE 
+#ENABLE STATIC WEBSITE 
 
 aws s3 website s3://$mybucket-kuberlekhi --index-document $indexx.html
 
 
-
------To upload "indexx.html" to your S3 bucket
+#To upload "indexx.html" to your S3 bucket
 
 aws s3 cp indexx.html s3://mybucket-kuberlekhi/
                  OR
 aws s3 cp ./index.html s3://mybucket-kuberlekhi
 
 
-
------If you want to upload multiple files                                       
+#If you want to upload multiple files                                       
 
 aws s3 cp . s3://mybucket-kuberlekhi/ --recursive
 
@@ -79,36 +72,24 @@ aws s3 cp . s3://mybucket-kuberlekhi/ --recursive
 {{{. means the current directory , --recursive will copy all files and directories under your current location.}}}                                                                     
 
 
-
------Confirm Static Website Hosting is Enabled
+#Confirm Static Website Hosting is Enabled
 aws s3api get-bucket-website --bucket mybucket-kuberlekhi
 
 
------If it's not enabled or returns an error, you need to enable static website hosting
+#If it's not enabled or returns an error, you need to enable static website hosting
 aws s3 website s3://mybucket-kuberlekhi --index-document index.html
 
 
-==================================================================================================================================================================================
-
-
------Check Bucket Permissions and Public Access
+#Check Bucket Permissions and Public Access
 
 aws s3api put-public-access-block --bucket mybucket-kuberlekhi --public-access-block-configuration BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false
 
 
------Then, verify that the policy is correctly applied by retrieving the policy
+#Then, verify that the policy is correctly applied by retrieving the policy
 
 aws s3api get-bucket-policy --bucket mybucket-kuberlekhi
 
 
-=================================================================================================================================================================================
+#WEBSITE URL
 
-WEBSITE URL
-
-http://mybucket-kuberlekhi.s3-website.ap-south-1.amazonaws.com
-
-
-
-
-
-
+#http://mybucket-kuberlekhi.s3-website.ap-south-1.amazonaws.com
