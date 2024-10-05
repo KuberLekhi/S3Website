@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#FILE1
+
 #CREATING THE BUCKET 
 
 #Bucket name here is taken as "mybucket-kuberlekhi"
