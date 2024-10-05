@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#FILE2 [After FILE 1]
 
 #CREATING CLOUDFRONT DISTRIBUTION
 
