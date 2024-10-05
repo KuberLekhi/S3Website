@@ -55,6 +55,6 @@ aws s3api get-bucket-policy --bucket mybucket-kuberlekhi
 
 #RETRIEVE THE CLOUDFRONT DOMAIN NAME [Gives detail about cloudfront distribution including Distribution ID]
 
-aws cloudfront list-distributions
+aws cloudfront list-distributions 
 
 
