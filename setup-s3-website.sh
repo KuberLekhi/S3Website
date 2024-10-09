@@ -5,7 +5,7 @@
 #CREATING THE BUCKET 
 
 #Bucket name here is taken as "mybucket-kuberlekhi"
-#Index page is "indexx.html"
+#Index page here is taken as "indexx.html"
 
 # Variables
 BUCKET_NAME="mybucket-kuberlekhi"  # Pre-defined bucket name
