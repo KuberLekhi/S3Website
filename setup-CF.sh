@@ -41,7 +41,7 @@ aws cloudfront create-cloud-front-origin-access-identity --cloud-front-origin-ac
 }
 
 
- [[replace <CloudFront-OAI-ID> with the actual OAI ID created earlier.]]
+ #[[replace <CloudFront-OAI-ID> with the actual OAI ID created earlier.]]
 
 
 #APPLY THAT POLICY 
