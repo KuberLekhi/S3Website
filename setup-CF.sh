@@ -1,6 +1,9 @@
 #!/bin/bash
 
-#FILE2 [After FILE 1]
+#FILE2 [After "setup-s3.sh"]
+
+#Bucket name here is taken as "mybucket-kuberlekhi"
+#Index page here is taken as "indexx.html"
 
 #CREATING CLOUDFRONT DISTRIBUTION
 
